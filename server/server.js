@@ -9,7 +9,10 @@ const wifiRoutes = require('./wifiRoutes');
 const passwordRoute = require('./passwordRoute')
 const authMiddleware = require('./authMiddleware');
 
+const path = __dirname + '/dist/';
 const app = express();
+
+app.use(express.static(path));
 
 const corsOptions = {
   origin: "http://localhost:5173", 
@@ -25,6 +28,10 @@ app.use(bodyParser.json());
 // Parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get('/', function (req,res) {
+  res.sendFile(path + "index.html");
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/reset', resetPassword);
@@ -33,9 +40,9 @@ app.use('/api/wifi',authMiddleware, wifiRoutes);
 app.use('/api/change-password',authMiddleware, passwordRoute);
 
 // Simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
-});
+// app.get("/", (req, res) => {
+//   res.json({ message: "Welcome to bezkoder application." });
+// });
 
 // Error handling middleware
 app.use((err, req, res, next) => {
