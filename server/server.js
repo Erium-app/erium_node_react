@@ -15,9 +15,9 @@ const app = express();
 app.use(express.static(path));
 
 const corsOptions = {
-  origin: "http://localhost:5173", 
+  // origin: "http://localhost:5173", 
   // origin: "http://127.0.0.1:5173", 
- 
+ origin: "http://erium.local",
 };
 
 app.use(cors(corsOptions));
