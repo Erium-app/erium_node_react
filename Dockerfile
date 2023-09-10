@@ -3,9 +3,9 @@ FROM node:latest
 RUN npm cache clean -f
 
 WORKDIR /app
-COPY ["package.json", "package-lock.json*", "./"]
+COPY package*.json ./
 
-RUN npm install --production
+RUN npm install
 
 COPY . .
 
