@@ -15,6 +15,7 @@ import Repository from './page/Repository';
 import System from './page/System';
 import Support from './page/Support';
 import Comunity from './page/Comunity';
+import { redirect } from "react-router-dom";
 import { useAuth } from './context/AuthContext';
 
 function App() {
@@ -43,8 +44,8 @@ function App() {
         <Route path='comunity' element={<Comunity/>} />
         <Route path='support' element={<Support/>} />
       </Route>
-      : 
-      ""}
+      : redirect("/login")
+      }
 
       </Routes>
       </div>
