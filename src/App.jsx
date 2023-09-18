@@ -29,7 +29,7 @@ function App() {
     { user ? <Navbar/>: ""}
       <Routes>
 
-      <Route index element={<Login/>}/>
+      
       <Route path="login" element={<Login/>} />
       <Route path="register" element={<Register/>} />
       { user ? 
@@ -44,7 +44,8 @@ function App() {
         <Route path='comunity' element={<Comunity/>} />
         <Route path='support' element={<Support/>} />
       </Route>
-      : redirect("/login")
+      : <Route index element={<Login/>}/>
+      // redirect("/login")
       }
 
       </Routes>
