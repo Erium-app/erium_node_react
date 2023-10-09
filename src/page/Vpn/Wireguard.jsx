@@ -1,4 +1,4 @@
-"use client"
+
 import { useState } from 'react'
 import {BsDownload, BsInfoCircleFill, BsQrCode} from 'react-icons/bs'
 import { HiOutlineClipboardCopy } from 'react-icons/hi'
