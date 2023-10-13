@@ -10,5 +10,5 @@ Currently, two official plugins are available:
 
 # Run with Docker
 ```bash
-NETWORK_NAME="my-network" && docker network inspect "$NETWORK_NAME" &>/dev/null || docker network create "$NETWORK_NAME" && docker rm -f nginx-container react-app &>/dev/null || true && docker pull eriumzone/nginx-react-app:latest && docker pull eriumzone/node-react-app:latest && docker run -d --name react-app --network my-network eriumzone/node-react-app:latest && docker run -d --name nginx-container --network my-network -p 80:80 --restart=no eriumzone/nginx-react-app:latest
+NETWORK_NAME="erium-network" && docker network inspect "$NETWORK_NAME" &>/dev/null || docker network create "$NETWORK_NAME" && docker rm -f nginx-container react-app &>/dev/null || true && docker pull eriumzone/nginx-react-app:latest && docker pull eriumzone/node-react-app:latest && docker run -d --name react-app --network erium-network eriumzone/node-react-app:latest && docker run -d --name nginx-container --network erium-network -p 80:80 --restart=no eriumzone/nginx-react-app:latest
 ```
