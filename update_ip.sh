@@ -10,8 +10,8 @@ HOSTS_FILE="/etc/hosts"
 
 sudo sed -i "/$DOMAIN/d" $HOSTS_FILE
 
-echo "$NEW_IP $DOMAIN" | sudo tee -a $HOSTS_FILE
+echo "$NEW_IP $DOMAIN" | sudo tee -a $HOSTS_FILE > /dev/null 2>&1
 
-    # Wait for 5 seconds
+    # Wait for 1 seconds
     sleep 1
 done
