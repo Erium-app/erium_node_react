@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  react-app:
+    image: eriumzone/node-react-app:latest
+    restart: unless-stopped
+    networks:
+      - erium-network
+
+  nginx-container:
+    image: eriumzone/nginx-react-app:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    networks:
+      - erium-network
+
+networks:
+  erium-network:
