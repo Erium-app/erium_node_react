@@ -15,5 +15,16 @@ services:
     networks:
       - erium-network
 
+  geth-node:
+    image: ethereum/client-go:latest
+    container_name: geth-node
+    command: --syncmode=snap --cache=1024 --http --http.addr 0.0.0.0 --http.port 8545 --http.corsdomain "*"
+    volumes:
+      - /home/erium-user:/root/.ethereum
+    ports:
+      - "8545:8545"
+      - "30303:30303"
+    restart: always
+
 networks:
   erium-network:
