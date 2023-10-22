@@ -26,5 +26,15 @@ services:
       - "30303:30303"
     restart: always
 
+  beacon-node:
+    image: gcr.io/prysmaticlabs/prysm/beacon-chain:latest
+    container_name: beacon-node
+    volumes:
+      - $HOME/prysm:/data
+    ports:
+      - "4000:4000"
+      - "13000:13000"
+    command: --accept-terms-of-use
+
 networks:
   erium-network:
