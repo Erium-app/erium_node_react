@@ -36,5 +36,32 @@ services:
       - "13000:13000"
     command: --accept-terms-of-use
 
+  wifi.erium:
+    image: "eriumzone/wifi-hotspot:latest"
+    container_name: erium-wifi_hotspot
+    environment:
+      - SSID=eriumWIFI
+      - WPA_PASSPHRASE=tamtum88
+      - NAT=true
+      - CHANNEL=11
+      - MODE=admin
+      - INTERFACE
+      - ADVANCED_OPTIONS=no
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    dns: 172.33.1.2
+    privileged: true
+    restart: unless-stopped
+    networks:
+      erium-network:
+        ipv4_address: 172.33.1.10
+        aliases:
+          - wifi.erium
+    logging:
+      driver: journald
+
 networks:
   erium-network:
+    ipam:
+      config:
+        - subnet: 172.33.0.0/16
